@@ -1,0 +1,32 @@
+# Systemd Unit file for tuya-shelly service
+# 
+# Make sure to update your Working Directory
+# one way to achieve this: with an override: 
+# run `systemctl edit oekoboiler-shelly` 
+# in the editor, add the following (the 
+# [Service] section is important!)
+# 
+# [Service]
+# WorkingDirectory=<your working dir>
+
+[Unit]
+Description=Tuya Shelly Service
+
+[Service]
+WorkingDirectory=/opt/tuya-shelly
+
+ExecStart=yarn node bin/tuya-shelly
+Restart=always
+User=root
+# Load Crendentials securely from "oekoboiler-shelly"
+# This requires an up-to-date systemd with systemd-creds,
+# see https://systemd.io/CREDENTIALS/ 
+# The credentials file you generate must be created 
+# with the same name used here, i.e. `oekoboiler-shelly`
+# systemd-creds encrypt infile oekoboiler-shelly
+LoadCredentialEncrypted=tuya-shelly
+Environment=PATH=/usr/bin:/usr/local/bin
+Environment=DOTENV_CONFIG_PATH=%d/tuya-shelly
+
+[Install]
+WantedBy=multi-user.target
