@@ -2963,6 +2963,35 @@ __metadata:
   languageName: node
   linkType: hard
 
+"hombli-shelly@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "hombli-shelly@workspace:."
+  dependencies:
+    "@commitlint/cli": ^17.4.0
+    "@commitlint/config-conventional": ^17.4.0
+    "@types/eslint": ^8
+    "@types/node": ^18.11.18
+    "@types/prettier": ^2
+    "@typescript-eslint/eslint-plugin": ^5.48.1
+    "@typescript-eslint/parser": ^5.48.1
+    "@yarnpkg/sdks": ^3.0.0-rc.34
+    depcheck: ^1.4.3
+    dotenv: ^16.0.3
+    eslint: ^8.31.0
+    eslint-config-prettier: ^8.6.0
+    eslint-plugin-prettier: ^4.2.1
+    fake-shelly: "https://github.com/johannrichard/fake-shelly#shelly1-ip-bind"
+    husky: ^8.0.3
+    lint-staged: ^13.1.0
+    pinst: ^3.0.0
+    prettier: 2.8.3
+    random-mac: ^0.0.5
+    rimraf: ^3.0.2
+    tuyapi: ^7.5.1
+    typescript: ^4.9.4
+  languageName: unknown
+  linkType: soft
+
 "hosted-git-info@npm:^2.1.4":
   version: 2.8.9
   resolution: "hosted-git-info@npm:2.8.9"
@@ -4478,7 +4507,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier@npm:^2.8.3":
+"prettier@npm:2.8.3":
   version: 2.8.3
   resolution: "prettier@npm:2.8.3"
   bin:
@@ -5604,35 +5633,6 @@ __metadata:
   checksum: c362948df9ad34b649b5585e54ce2838fa583aa3037091aaed66793c65b423a264e5229f0d7e9a95513a795ac2bd4cb72cda7e89a74313f182c1e9ae0b0994fa
   languageName: node
   linkType: hard
-
-"hombli-shelly@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "hombli-shelly@workspace:."
-  dependencies:
-    "@commitlint/cli": ^17.4.0
-    "@commitlint/config-conventional": ^17.4.0
-    "@types/eslint": ^8
-    "@types/node": ^18.11.18
-    "@types/prettier": ^2
-    "@typescript-eslint/eslint-plugin": ^5.48.1
-    "@typescript-eslint/parser": ^5.48.1
-    "@yarnpkg/sdks": ^3.0.0-rc.34
-    depcheck: ^1.4.3
-    dotenv: ^16.0.3
-    eslint: ^8.31.0
-    eslint-config-prettier: ^8.6.0
-    eslint-plugin-prettier: ^4.2.1
-    fake-shelly: "https://github.com/johannrichard/fake-shelly#shelly1-ip-bind"
-    husky: ^8.0.3
-    lint-staged: ^13.1.0
-    pinst: ^3.0.0
-    prettier: ^2.8.3
-    random-mac: ^0.0.5
-    rimraf: ^3.0.2
-    tuyapi: ^7.5.1
-    typescript: ^4.9.4
-  languageName: unknown
-  linkType: soft
 
 "tuyapi@npm:^7.5.1":
   version: 7.5.1
