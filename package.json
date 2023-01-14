@@ -1,0 +1,50 @@
+{
+  "name": "tuya-shelly",
+  "description": "Emulate a Shelly 1 with temperature data from Tuya Smart Switches",
+  "version": "0.0.0",
+  "main": "bin/tuya-shelly",
+  "types": "dist/index.d.ts",
+  "author": "johannrichard",
+  "license": "MIT",
+  "repository": "https://github.com/johannrichard/tuya-shelly",
+  "packageManager": "yarn@3.3.1",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "fake-shelly": "https://github.com/johannrichard/fake-shelly#shelly1-ip-bind",
+    "random-mac": "^0.0.5",
+    "tuyapi": "^7.5.1"
+  },
+  "scripts": {
+    "lint": "eslint src/**.ts",
+    "postinstall": "yarn husky install",
+    "prepack": "yarn pinst --disable",
+    "postpack": "yarn pinst --enable",
+    "build": "yarn rimraf ./dist && tsc",
+    "op-start": "yarn build && op run --no-masking --env-file=.env -- node bin/tuya-shelly"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^17.4.0",
+    "@commitlint/config-conventional": "^17.4.0",
+    "@types/eslint": "^8",
+    "@types/node": "^18.11.18",
+    "@types/prettier": "^2",
+    "@typescript-eslint/eslint-plugin": "^5.48.1",
+    "@typescript-eslint/parser": "^5.48.1",
+    "@yarnpkg/sdks": "^3.0.0-rc.34",
+    "depcheck": "^1.4.3",
+    "eslint": "^8.31.0",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.1.0",
+    "pinst": "^3.0.0",
+    "prettier": "^2.8.3",
+    "rimraf": "^3.0.2",
+    "typescript": "^4.9.4"
+  },
+  "lint-staged": {
+    "**/*.+(js|jsx|css|less|scss|ts|tsx|md)": [
+      "prettier --write"
+    ]
+  }
+}
