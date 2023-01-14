@@ -4,10 +4,10 @@
  *
  * To use it, define the following three environment variables:
  *
- * TUYA_ID: your Tuya device's ID
- * TUYA_KEY: your Tuya device's local key
- * TUYA_SERVER_IP: IP address to listen to
- * TUYA_MAC: the MAC adress to use
+ * HOMBLI_ID: your Hombli device's ID
+ * HOMBLI_KEY: your Hombli device's local key
+ * HOMBLI_LISTEN_IP: IP address to listen to
+ * HOMBLI_MAC: the MAC adress to use
  *
  * If you're unsure about the local key, have a look at `tuyapi`
  * and the example provided therein to get all your devices' local key
@@ -19,13 +19,13 @@ import { CoapServer, HttpServer } from 'fake-shelly';
 import { Shelly1PM } from 'fake-shelly/devices';
 import 'dotenv/config';
 
-const mac = process.env.TUYA_MAC || randomMac('00:40:4f');
+const mac = process.env.HOMBLI_MAC || (randomMac('00:40:4f')).replace(/:/g, "").toUpperCase();
 const interval = 5;
 
-class TuyaShelly extends Shelly1PM {
-  private upstreamTuyaDevice: TuyaDevice = new TuyAPI({
-    id: process.env.TUYA_ID!,
-    key: process.env.TUYA_KEY!,
+class HombliShelly extends Shelly1PM {
+  private upstreamHombliSwitch: TuyaDevice = new TuyAPI({
+    id: process.env.HOMBLI_ID!,
+    key: process.env.HOMBLI_KEY!,
   });
 
   constructor(id: string) {
@@ -41,12 +41,12 @@ class TuyaShelly extends Shelly1PM {
     });
 
     // Find device on network
-    this.upstreamTuyaDevice.find().then(() => {
+    this.upstreamHombliSwitch.find().then(() => {
       // Connect to device
-      this.upstreamTuyaDevice.connect().then(() => {
+      this.upstreamHombliSwitch.connect().then(() => {
         setInterval(() => {
           // Device will emit changed values
-          this.upstreamTuyaDevice.refresh({});
+          this.upstreamHombliSwitch.refresh({});
         }, interval * 1000);
       });
     });
@@ -71,7 +71,7 @@ class TuyaShelly extends Shelly1PM {
        
        */
 
-    this.upstreamTuyaDevice.on('data', (data) => {
+    this.upstreamHombliSwitch.on('data', (data) => {
       // Updates only update single values
       if (data!.dps && '1' in data.dps) {
         this.relay0 = data.dps['1'];
@@ -83,7 +83,7 @@ class TuyaShelly extends Shelly1PM {
       }
     });
 
-    this.upstreamTuyaDevice.on('dp-refresh', (data) => {
+    this.upstreamHombliSwitch.on('dp-refresh', (data) => {
       if (data!.dps && '19' in data.dps) {
         var power: number = data.dps['19'] as number;
         this.powerMeter0 = power / 10;
@@ -128,20 +128,13 @@ class TuyaShelly extends Shelly1PM {
 let tuya;
 
 try {
-  tuya = new TuyaShelly(mac);
-  console.log(
-    `▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
-██░▄▄▄░█░▄▄█░█▀█▀▄▄▀█░▄▄▀█▀▄▄▀██▄██░██░▄▄█░▄▄▀███░█░████░▄▄▄░█░████░▄▄█░██░██░██░██
-██░███░█░▄▄█░▄▀█░██░█░▄▄▀█░██░██░▄█░██░▄▄█░▀▀▄███▀▄▀████▄▄▄▀▀█░▄▄░█░▄▄█░██░██░▀▀░██
-██░▀▀▀░█▄▄▄█▄█▄██▄▄██▄▄▄▄██▄▄██▄▄▄█▄▄█▄▄▄█▄█▄▄███▄█▄████░▀▀▀░█▄██▄█▄▄▄█▄▄█▄▄█▀▀▀▄██
-▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀`,
-  );
+  tuya = new HombliShelly(mac);
   console.log('------------------------------');
   console.log('Shelly:     ', tuya.type);
   console.log('ID:         ', tuya.id);
-  console.log('Tuya ID:    ', process.env.TUYA_ID);
-  console.log('Tuya IP:    ', process.env.TUYA_IP);
-  console.log('Listen IP:  ', process.env.TUYA_LISTEN_IP || 'all interfaces');
+  console.log('Hombli ID:    ', process.env.HOMBLI_ID);
+  console.log('Hombli IP:    ', process.env.HOMBLI_IP);
+  console.log('Listen IP:  ', process.env.HOMBLI_LISTEN_IP || 'all interfaces');
   console.log('------------------------------');
   console.log('');
 
@@ -158,9 +151,9 @@ try {
     });
 
   httpServer
-    .start(process.env.TUYA_LISTEN_IP)
+    .start(process.env.HOMBLI_LISTEN_IP)
     .then(() => {
-      console.log(`HTTP server started on ${process.env.TUYA_LISTEN_IP || "all ip addresses"}`);
+      console.log(`HTTP server started on ${process.env.HOMBLI_LISTEN_IP || "all ip addresses"}`);
     })
     .catch((error) => {
       console.error('Failed to start HTTP server:', error);

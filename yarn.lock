@@ -5605,9 +5605,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tuya-shelly@workspace:.":
+"hombli-shelly@workspace:.":
   version: 0.0.0-use.local
-  resolution: "tuya-shelly@workspace:."
+  resolution: "hombli-shelly@workspace:."
   dependencies:
     "@commitlint/cli": ^17.4.0
     "@commitlint/config-conventional": ^17.4.0

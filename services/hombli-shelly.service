@@ -1,8 +1,8 @@
-# Systemd Unit file for tuya-shelly service
+# Systemd Unit file for hombli-shelly service
 # 
 # Make sure to update your Working Directory
 # one way to achieve this: with an override: 
-# run `systemctl edit oekoboiler-shelly` 
+# run `systemctl edit hombli-shelly` 
 # in the editor, add the following (the 
 # [Service] section is important!)
 # 
@@ -10,23 +10,23 @@
 # WorkingDirectory=<your working dir>
 
 [Unit]
-Description=Tuya Shelly Service
+Description=Hombli Shelly Service
 
 [Service]
-WorkingDirectory=/opt/tuya-shelly
+WorkingDirectory=/opt/hombli-shelly
 
-ExecStart=yarn node bin/tuya-shelly
+ExecStart=yarn node bin/hombli-shelly
 Restart=always
 User=root
-# Load Crendentials securely from "oekoboiler-shelly"
+# Load Crendentials securely from "hombli-shelly"
 # This requires an up-to-date systemd with systemd-creds,
 # see https://systemd.io/CREDENTIALS/ 
 # The credentials file you generate must be created 
-# with the same name used here, i.e. `oekoboiler-shelly`
-# systemd-creds encrypt infile oekoboiler-shelly
-LoadCredentialEncrypted=tuya-shelly
+# with the same name used here, i.e. `hombli-shelly`
+# systemd-creds encrypt infile hombli-shelly
+LoadCredentialEncrypted=hombli-shelly
 Environment=PATH=/usr/bin:/usr/local/bin
-Environment=DOTENV_CONFIG_PATH=%d/tuya-shelly
+Environment=DOTENV_CONFIG_PATH=%d/hombli-shelly
 
 [Install]
 WantedBy=multi-user.target

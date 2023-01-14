@@ -1,12 +1,12 @@
 {
-  "name": "tuya-shelly",
-  "description": "Emulate a Shelly 1 with temperature data from Tuya Smart Switches",
+  "name": "hombli-shelly",
+  "description": "Emulate a Shelly 1 with temperature data from Hombli Smart Switches",
   "version": "0.0.0",
-  "main": "bin/tuya-shelly",
+  "main": "bin/hombli-shelly",
   "types": "dist/index.d.ts",
   "author": "johannrichard",
   "license": "MIT",
-  "repository": "https://github.com/johannrichard/tuya-shelly",
+  "repository": "https://github.com/johannrichard/hombli-shelly",
   "packageManager": "yarn@3.3.1",
   "dependencies": {
     "dotenv": "^16.0.3",
@@ -20,7 +20,7 @@
     "prepack": "yarn pinst --disable",
     "postpack": "yarn pinst --enable",
     "build": "yarn rimraf ./dist && tsc",
-    "op-start": "yarn build && op run --no-masking --env-file=.env -- node bin/tuya-shelly"
+    "op-start": "yarn build && op run --no-masking --env-file=.env -- node bin/hombli-shelly"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.4.0",
