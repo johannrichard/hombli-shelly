@@ -93,16 +93,8 @@ class HombliShelly extends Shelly1PM {
 
   protected _getHttpSettings() {
     return {
-      sensors: {
-        temperature_threshold: 1,
-        temperature_unit: 'C',
-      },
       relays: [this._getRelay0HttpSettings()],
       meters: [this._getPowerMeter0HttpSettings()],
-      ext_sensors: {
-        temperature_unit: 'C',
-      },
-      ext_temperature: {},
     };
   }
 
@@ -110,17 +102,6 @@ class HombliShelly extends Shelly1PM {
     return {
       relays: [this._getRelay0HttpStatus()],
       meters: [this._getPowerMeter0HttpStatus()],
-      tmp: {},
-      ext_sensors: {
-        temperature_unit: 'C',
-      },
-      ext_temperature: {
-        0: {
-          hwID: 0,
-          tC: this.temperature,
-          tF: (this.temperature * 9) / 5 + 32,
-        },
-      },
     };
   }
 }
