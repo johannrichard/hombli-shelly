@@ -2,7 +2,7 @@
 
 **WORK IN PROGRESS** (actually, work without progress)
 
->When I first started programming [`oekoboiler-shelly`](https://github.com/johannrichard/oekoboiler-shelly), I started with a Hombli Plug, and this was the conde I inteded to build. However, for reasons I don't recall exactly aynmore (Probably because MyStrom was simpler and quicker to implement than Hombli, and I still had one lying around), I switched to a MyStrom Plug, and essentially abandonded this code-base. Sorry for that. 
+>When I first started programming [`oekoboiler-shelly`](https://github.com/johannrichard/oekoboiler-shelly), I started with a Hombli Plug, and this was the code I intended to build. However, for reasons I don't recall exactly aynmore (Probably because MyStrom was simpler and quicker to implement than Hombli, and I still had one lying around), I switched to a MyStrom Plug, and essentially abandonded this code-base. Sorry for that. 
 
 [Hombli](https://www.hombli.com) produces are Tuya-based IoT devices like Wi-Fi connected Smart Plugs. Shelly is another brand of Smart Devices which can be controlled via Wi-Fi.
 
