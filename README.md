@@ -4,7 +4,7 @@
 
 >When I first started programming [`oekoboiler-shelly`](https://github.com/johannrichard/oekoboiler-shelly), I started with a Hombli Plug, and this was the code I intended to build. However, for reasons I don't recall exactly aynmore (Probably because MyStrom was simpler and quicker to implement than Hombli, and I still had one lying around), I switched to a MyStrom Plug, and essentially abandonded this code-base. Sorry for that. 
 
-[Hombli](https://www.hombli.com) produces are Tuya-based IoT devices like Wi-Fi connected Smart Plugs. Shelly is another brand of Smart Devices which can be controlled via Wi-Fi.
+[Hombli](https://www.hombli.com) produces Tuya-based IoT devices like Wi-Fi connected Smart Plugs. Shelly is another brand of Smart Devices which can be controlled via Wi-Fi.
 
 This is a little script to merge (or fake) a Shelly 1 Smart Plug based on a Hombli-Switch with temperature sensors. Any tool, software or device which can interact with a Shelly 1 should then in principle be able to control a Hombli via this script.
 
